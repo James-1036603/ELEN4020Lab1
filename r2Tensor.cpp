@@ -47,7 +47,30 @@ r2Tensor r2Tensor::addR2Tensor(const r2Tensor* TensorToAdd)
 				tempTensor.r2Vector.at(i).at(j) = this->r2Vector.at(i).at(j) + TensorToAdd->r2Vector.at(i).at(j);
 			}			
 		}
-	}
+	} else std::cout<<"Error: Dimension Mismatch for Adding"<<std::endl;
+	return tempTensor;
+}
+
+
+r2Tensor r2Tensor::multR2Tensor(const r2Tensor* TensorToMult)
+{//Multiply two r2Tensors together.
+//Check for nxm vs mxn that m = m. Will return a nxn tensor
+	r2Tensor tempTensor(this->r2Vector.at(0).size(), this->r2Vector.size(),0);
+	
+	if(this->r2Vector.size() == TensorToMult->r2Vector.at(0).size())
+	{//mult cols by rows and add
+		for(std::size_t i = 0; i < this->r2Vector.size(); i++)
+		{
+			for(std::size_t j = 0; j < TensorToMult->r2Vector.at(0).size(); j++)
+			{
+				for(std::size_t k = 0; k < this->r2Vector.at(0).size(); k++)
+				{
+					tempTensor.r2Vector.at(i).at(j) += this->r2Vector.at(i).at(k) * TensorToMult->r2Vector.at(k).at(j);
+				}
+			}
+		}
+	} else std::cout<<"Error: Dimension Mismatch for Multiplying"<<std::endl;
+	
 	return tempTensor;
 }
 
