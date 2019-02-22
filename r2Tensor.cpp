@@ -58,15 +58,17 @@ r2Tensor r2Tensor::multR2Tensor(const r2Tensor* TensorToMult)
 	r2Tensor tempTensor(this->r2Vector.at(0).size(), this->r2Vector.size(),0);
 	
 	if(this->r2Vector.size() == TensorToMult->r2Vector.at(0).size())
-	{//mult cols by rows and add
+	{//mult cols by rows and add. Think this assumes nxn and not nxm
 		for(std::size_t i = 0; i < this->r2Vector.size(); i++)
 		{
-			for(std::size_t j = 0; j < TensorToMult->r2Vector.at(0).size(); j++)
+			for(std::size_t j = 0; j < this->r2Vector.size(); j++)
 			{
-				for(std::size_t k = 0; k < this->r2Vector.at(0).size(); k++)
+				auto tempSol = 0;
+				for(std::size_t k = 0; k < TensorToMult->r2Vector.size(); k++)
 				{
-					tempTensor.r2Vector.at(i).at(j) += this->r2Vector.at(i).at(k) * TensorToMult->r2Vector.at(k).at(j);
+					tempSol += this->r2Vector.at(i).at(k)*TensorToMult->r2Vector.at(k).at(j);
 				}
+				tempTensor.r2Vector.at(i).at(j) = tempSol;
 			}
 		}
 	} else std::cout<<"Error: Dimension Mismatch for Multiplying"<<std::endl;

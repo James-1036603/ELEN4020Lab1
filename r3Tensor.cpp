@@ -37,3 +37,20 @@ void r3Tensor::addr2TensorToVector(const r2Tensor* TensorToAdd)
 {//Private method to add a r2 tensor to the r3 tensor. This is a function used in the addition and multiplication
 	this->r3Vector.push_back(*TensorToAdd);
 }
+
+r3Tensor r3Tensor::multR3Tensor(const r3Tensor* TensorToMult)
+{//Multiply two nxn r3 Tensors
+	r3Tensor tempR3Tensor;
+	r2Tensor tempR2Tensor;
+	if(this->r3Vector.size() == TensorToMult->r3Vector.size())
+	{
+		for(std::size_t i = 0; i < this->r3Vector.size(); i++)
+		{
+			tempR2Tensor = this->r3Vector.at(i).multR2Tensor(&TensorToMult->r3Vector.at(i));
+			tempR3Tensor.r3Vector.push_back(tempR2Tensor);
+		}
+		
+	} else std::cout<<"Error: Dimension Mismatch to Add"<<std::endl;
+	
+	return tempR3Tensor;
+}
