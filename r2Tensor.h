@@ -10,6 +10,7 @@ typedef std::vector<std::vector<int>> r2Vec;
 class r2Tensor
 {
 public:
+    r2Tensor() {};
 	r2Tensor(std::size_t x, std::size_t y, const bool populated);	
 	~r2Tensor() {};
 	void changeAtPosition(std::size_t x, std::size_t y, int val);

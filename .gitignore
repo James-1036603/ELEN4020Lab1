@@ -6,3 +6,5 @@
 *.mk
 
 Debug/
+
+main\.cpp
