@@ -9,6 +9,7 @@ class r3Tensor
 {
 public:
     
+	r3Tensor() {};
 	r3Tensor(int x, int y, int z, bool populate);	
 	~r3Tensor() {};	
 	r3Tensor rank3TensorMult(const r3Tensor* TensorToMult);
@@ -17,7 +18,7 @@ public:
 	
 private:
 	std::vector<r2Tensor> r3Vector; //The r3Tensor is a accumulation of r2Tensors
-    r3Tensor() {};//Private constructor to create a temporary tensor.
+    
 	void addr2TensorToVector(const r2Tensor* TensorToAdd);
 };
 
