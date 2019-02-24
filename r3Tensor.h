@@ -11,8 +11,8 @@ public:
     
 	r3Tensor(int x, int y, int z, bool populate);	
 	~r3Tensor() {};	
-	r3Tensor multR3Tensor(const r3Tensor* TensorToMult);
-	r3Tensor addR3Tensor(const r3Tensor* TensorToAdd);
+	r3Tensor rank3TensorMult(const r3Tensor* TensorToMult);
+	r3Tensor rank3TensorAdd(const r3Tensor* TensorToAdd);
 	void printTensor();
 	
 private:

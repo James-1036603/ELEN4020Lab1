@@ -17,7 +17,7 @@ void r3Tensor::printTensor()
 	}
 }
 
-r3Tensor r3Tensor::addR3Tensor(const r3Tensor* TensorToAdd)
+r3Tensor r3Tensor::rank3TensorAdd(const r3Tensor* TensorToAdd)
 {//Adds two r3 tensors together. Check that they have the same dimensions. (other 2 are already checked in other method)
 	r3Tensor tempR3Tensor;
     r2Tensor tempR2Tensor;
@@ -25,7 +25,7 @@ r3Tensor r3Tensor::addR3Tensor(const r3Tensor* TensorToAdd)
 	{
 		for(std::size_t i = 0; i < this->r3Vector.size(); i++) 
 		{
-			tempR2Tensor = r3Vector.at(i).addR2Tensor(&TensorToAdd->r3Vector.at(i));
+			tempR2Tensor = r3Vector.at(i).rank2TensorAdd(&TensorToAdd->r3Vector.at(i));
             tempR3Tensor.addr2TensorToVector(&tempR2Tensor);
 		}
 	} else r3ErrorLogger.logError("Error: Dimension mismatch for adding 3D Matrix.");
@@ -38,7 +38,7 @@ void r3Tensor::addr2TensorToVector(const r2Tensor* TensorToAdd)
 	this->r3Vector.push_back(*TensorToAdd);
 }
 
-r3Tensor r3Tensor::multR3Tensor(const r3Tensor* TensorToMult)
+r3Tensor r3Tensor::rank3TensorMult(const r3Tensor* TensorToMult)
 {//Multiply two nxn r3 Tensors
 	r3Tensor tempR3Tensor;
 	r2Tensor tempR2Tensor;
@@ -46,7 +46,7 @@ r3Tensor r3Tensor::multR3Tensor(const r3Tensor* TensorToMult)
 	{
 		for(std::size_t i = 0; i < this->r3Vector.size(); i++)
 		{
-			tempR2Tensor = this->r3Vector.at(i).multR2Tensor(&TensorToMult->r3Vector.at(i));
+			tempR2Tensor = this->r3Vector.at(i).rank2TensorMult(&TensorToMult->r3Vector.at(i));
 			tempR3Tensor.r3Vector.push_back(tempR2Tensor);
 		}
 		

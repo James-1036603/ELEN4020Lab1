@@ -33,7 +33,7 @@ void r2Tensor::populateVetor()
 }
 
 
-r2Tensor r2Tensor::addR2Tensor(const r2Tensor* TensorToAdd)
+r2Tensor r2Tensor::rank2TensorAdd(const r2Tensor* TensorToAdd)
 {//Adds another tensor to the current one. Will return a new unique tensor
 	//first check nxm vs nxm for addition, then add.
 	r2Tensor tempTensor(this->r2Vector.size(), this->r2Vector.at(0).size(),0);
@@ -52,7 +52,7 @@ r2Tensor r2Tensor::addR2Tensor(const r2Tensor* TensorToAdd)
 }
 
 
-r2Tensor r2Tensor::multR2Tensor(const r2Tensor* TensorToMult)
+r2Tensor r2Tensor::rank2TensorMult(const r2Tensor* TensorToMult)
 {//Multiply two r2Tensors together.
 //Check for nxm vs mxn that m = m. Will return a nxn tensor
 	r2Tensor tempTensor(this->r2Vector.at(0).size(), this->r2Vector.size(),0);

@@ -17,8 +17,8 @@ public:
 	~r2Tensor() {};
 	void changeAtPosition(std::size_t x, std::size_t y, int val);
 	
-	r2Tensor addR2Tensor(const r2Tensor* TensorToAdd);
-	r2Tensor multR2Tensor(const r2Tensor* TensorToMult);
+	r2Tensor rank2TensorAdd(const r2Tensor* TensorToAdd);
+	r2Tensor rank2TensorMult(const r2Tensor* TensorToMult);
 	void printTensor();
 	
 private:
