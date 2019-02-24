@@ -1,2 +1,10 @@
 
 *.project
+
+*.txt
+
+*.mk
+
+Debug/
+
+main\.cpp
