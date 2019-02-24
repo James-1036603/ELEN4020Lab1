@@ -3,7 +3,7 @@
 r2Tensor::r2Tensor(std::size_t x, std::size_t y, const bool populated)
 {//Creates an empty rank 2 tensor
 	r2Tensor::initVector(x,y);	
-	if(populated) populateVetor();
+	if(populated) populateVetor();	
 }
 
 
@@ -27,7 +27,7 @@ void r2Tensor::populateVetor()
 	{
 		for(std::size_t j = 0; j < r2Tensor::r2Vector.at(i).size(); j++)
 		{
-			r2Tensor::r2Vector.at(i).at(j) = std::rand() % 10;
+			r2Tensor::r2Vector.at(i).at(j) = std::rand() % 20 +1;
 		}
 	}
 }
@@ -47,7 +47,7 @@ r2Tensor r2Tensor::addR2Tensor(const r2Tensor* TensorToAdd)
 				tempTensor.r2Vector.at(i).at(j) = this->r2Vector.at(i).at(j) + TensorToAdd->r2Vector.at(i).at(j);
 			}			
 		}
-	} else std::cout<<"Error: Dimension Mismatch for Adding"<<std::endl;
+	} else r2ErrorLogger.logError("Error: Dimension mismatch for adding 2D Matrix.");
 	return tempTensor;
 }
 
@@ -71,7 +71,7 @@ r2Tensor r2Tensor::multR2Tensor(const r2Tensor* TensorToMult)
 				tempTensor.r2Vector.at(i).at(j) = tempSol;
 			}
 		}
-	} else std::cout<<"Error: Dimension Mismatch for Multiplying"<<std::endl;
+	} else r2ErrorLogger.logError("Error: Dimension mismatch for multiplying 2D Matrix");
 	
 	return tempTensor;
 }

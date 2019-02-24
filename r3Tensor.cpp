@@ -28,7 +28,7 @@ r3Tensor r3Tensor::addR3Tensor(const r3Tensor* TensorToAdd)
 			tempR2Tensor = r3Vector.at(i).addR2Tensor(&TensorToAdd->r3Vector.at(i));
             tempR3Tensor.addr2TensorToVector(&tempR2Tensor);
 		}
-	} else std::cout<<"Error: Dimension Mismatch to Add"<<std::endl;
+	} else r3ErrorLogger.logError("Error: Dimension mismatch for adding 3D Matrix.");
     return tempR3Tensor;
     
 }
@@ -50,7 +50,7 @@ r3Tensor r3Tensor::multR3Tensor(const r3Tensor* TensorToMult)
 			tempR3Tensor.r3Vector.push_back(tempR2Tensor);
 		}
 		
-	} else std::cout<<"Error: Dimension Mismatch to Add"<<std::endl;
+	} else r3ErrorLogger.logError("Error: Dimension mismatch for multiplying 3D Matrix.");
 	
 	return tempR3Tensor;
 }

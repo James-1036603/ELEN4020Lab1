@@ -2,6 +2,9 @@
 #define R3TENSOR_H
 #include <vector>
 #include "r2Tensor.h"
+
+static ErrorLog r3ErrorLogger;
+
 class r3Tensor
 {
 public:

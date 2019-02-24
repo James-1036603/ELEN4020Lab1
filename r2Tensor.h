@@ -4,8 +4,10 @@
 #include <cstdlib>
 #include <vector>
 #include <iostream>
+#include "ErrorLog.h"
 
 typedef std::vector<std::vector<int>> r2Vec;
+static ErrorLog r2ErrorLogger;
 
 class r2Tensor
 {
@@ -23,6 +25,7 @@ private:
  r2Vec r2Vector;
  void initVector(std::size_t x, std::size_t y);
  void populateVetor();
+ 
 };
 
 #endif // R2TENSOR_H
